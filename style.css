@@ -1,0 +1,194 @@
+:root {
+  --bg-color: #101820;
+  --arena-bg: #1b2a34;
+  --card-bg: #243640;
+  --text-color: #f0f0f0;
+  --accent: #64c2ff;
+  --accent-dark: #328bb3;
+  --border: #90a4ae;
+  --font-title: 'UnifrakturCook', cursive;
+  --font-body: 'Rajdhani', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 2rem;
+  font-family: var(--font-body);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+}
+
+.arena-container {
+  width: 100%;
+  max-width: 1200px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-family: var(--font-title);
+  font-size: 3rem;
+  color: var(--accent);
+  background: linear-gradient(to right, #64c2ff22, #328bb322);
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  box-shadow: 0 0 8px rgba(100, 194, 255, 0.2);
+}
+
+header p {
+  color: var(--border);
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.battlefield {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.arena {
+  width: 260px;
+  height: 200px;
+  background-color: var(--arena-bg);
+  border: 2px dashed var(--accent);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.arena.drag-over {
+  background-color: rgba(100, 194, 255, 0.1);
+  border-color: #ffffff;
+}
+
+.placeholder {
+  font-size: 1rem;
+  color: var(--border);
+}
+
+.controls {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+#status-text {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+
+#battle-log {
+  min-height: 30px;
+  font-size: 0.95rem;
+  color: var(--border);
+  margin-bottom: 1rem;
+}
+
+#reset-button {
+  background-color: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  font-weight: bold;
+  padding: 0.6rem 1.2rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+#reset-button:hover {
+  background-color: var(--accent);
+  color: var(--bg-color);
+}
+
+.warrior-selection {
+  background-color: var(--arena-bg);
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin-top: 3rem;
+}
+
+.warrior-selection h2 {
+  text-align: center;
+  color: var(--accent);
+  margin-bottom: 1.2rem;
+}
+
+.warrior-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1.5rem;
+}
+
+.warrior-image {
+  width: 100%;        /* ocupa toda a largura do card */
+  height: 120px;      /* ou o valor que preferir */
+  object-fit: contain;/* mostra a imagem inteira, sem cortar */
+  object-position: center;
+  border-radius: 4px;
+  margin-bottom: .6rem;
+  background-color: var(--card-bg); /* tampa PNGs transparentes */
+}
+
+.warrior-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  padding: 1rem;
+  cursor: grab;
+  transition: 0.3s;
+  box-shadow: 0 2px 5px rgba(100, 194, 255, 0.1);
+  clip-path: polygon(6% 0, 94% 0, 100% 10%, 100% 90%, 94% 100%, 6% 100%, 0% 90%, 0% 10%);
+  display: flex;          /* NOVO: empilha */
+  flex-direction: column; /* NOVO: em coluna */
+  align-items: center;    /* NOVO: centraliza */
+}
+
+.warrior-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px rgba(100, 194, 255, 0.3);
+}
+
+.warrior-card.dragging {
+  opacity: 0.5;
+  cursor: grabbing;
+}
+
+.warrior-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.warrior-header .icon {
+  font-size: 1.3rem;
+}
+
+.warrior-stats {
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+.warrior-stats div {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.2rem 0;
+}
+
+.warrior-stats div:last-child {
+  border-bottom: none;
+}
